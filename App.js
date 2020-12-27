@@ -1,57 +1,134 @@
 import React from 'react';
-import {View, StyleSheet, Text, Image} from 'react-native';
+import {View, StyleSheet, Text, Image, ScrollView} from 'react-native';
 
 const App = () => {
   return (
     <>
-      <View style={styles.container}>
-        <View style={styles.generalBox}>
-          <View style={styles.box1}>
-            <Image
-              source={require('./assets/images/png/logotipo.png')}
-              style={{width: '100%', height: 100}}
-            />
-          </View>
-          <View style={styles.box2}>
-            <Text>Como</Text>
-          </View>
-          <View style={styles.box3}>
-            <Text>Tu</Text>
-          </View>
-          <View style={styles.box4}>
-            <Text>Estas?</Text>
+      <ScrollView>
+        <View style={{flexDirection: 'row'}}>
+          {/* Se usa flexDirection row para aprovechar el contexto de flexbox. Es decir, se usa el concepto de que cuando es row y se coloca flex:1 este asigna al contenedor el maximo tamaño a lo ancho y no lo alto como lo haria por defecto al tener el column... Column con flex:1 ajusta completamente de forma vertical, y Row con flex:1 ajusta completamente de forma horizontal */}
+          <Image
+            source={require('./assets/images/bg.jpg')}
+            style={styles.header}
+          />
+        </View>
+        <View style={{marginHorizontal: 10}}>
+          <Text style={styles.titleSection}>¿Qué hacer en Paris?</Text>
+          <ScrollView horizontal>
+            <View>
+              <Image
+                source={require('./assets/images/activity1.jpg')}
+                style={styles.activity}
+              />
+            </View>
+            <View>
+              <Image
+                source={require('./assets/images/activity2.jpg')}
+                style={styles.activity}
+              />
+            </View>
+            <View>
+              <Image
+                source={require('./assets/images/activity3.jpg')}
+                style={styles.activity}
+              />
+            </View>
+            <View>
+              <Image
+                source={require('./assets/images/activity4.jpg')}
+                style={styles.activity}
+              />
+            </View>
+            <View>
+              <Image
+                source={require('./assets/images/activity5.jpg')}
+                style={styles.activity}
+              />
+            </View>
+          </ScrollView>
+
+          <Text style={styles.titleSection}>Mejores locaciones</Text>
+          <ScrollView>
+            <View>
+              <Image
+                source={require('./assets/images/best1.jpg')}
+                style={styles.bestLocation}
+              />
+            </View>
+            <View>
+              <Image
+                source={require('./assets/images/best2.jpg')}
+                style={styles.bestLocation}
+              />
+            </View>
+            <View>
+              <Image
+                source={require('./assets/images/best3.jpg')}
+                style={styles.bestLocation}
+              />
+            </View>
+          </ScrollView>
+
+          <Text style={styles.titleSection}>Locaciones en L.A</Text>
+          <View style={styles.listLocation}>
+            <View style={styles.listItemLocation}>
+              <Image
+                source={require('./assets/images/hospedaje1.jpg')}
+                style={styles.bestLocation}
+              />
+            </View>
+            <View style={styles.listItemLocation}>
+              <Image
+                source={require('./assets/images/hospedaje2.jpg')}
+                style={styles.bestLocation}
+              />
+            </View>
+            <View style={styles.listItemLocation}>
+              <Image
+                source={require('./assets/images/hospedaje3.jpg')}
+                style={styles.bestLocation}
+              />
+            </View>
+            <View style={styles.listItemLocation}>
+              <Image
+                source={require('./assets/images/hospedaje4.jpg')}
+                style={styles.bestLocation}
+              />
+            </View>
           </View>
         </View>
-      </View>
+      </ScrollView>
     </>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    backgroundColor: 'grey',
+  header: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    height: 150,
   },
-  generalBox: {
-    //width: '100%',
+  titleSection: {
+    fontSize: 30,
+    fontWeight: 'bold',
+    marginVertical: 5,
   },
-  box1: {
-    backgroundColor: 'white',
-    padding: 25,
+  activity: {
+    width: 250,
+    height: 270,
+    marginRight: 10,
   },
-  box2: {
-    backgroundColor: 'yellow',
-    padding: 25,
+  bestLocation: {
+    width: '100%',
+    height: 200,
+    marginBottom: 10,
   },
-  box3: {
-    backgroundColor: 'red',
-    padding: 25,
+  listLocation: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
   },
-  box4: {
-    backgroundColor: 'white',
-    padding: 25,
+  listItemLocation: {
+    flexBasis: '49%',
   },
 });
 
